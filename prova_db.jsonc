@@ -1,0 +1,34 @@
+[
+    {  // Esempio oggetto evento
+        "evento": "Ligabue Live",
+        "artisti": ["Ligabue"],
+        "genere": "...",
+        "data": "2024-07-10",
+        "ora": "19:00:00",
+        "luogo": {
+            "nome_luogo": "Stadio Olimpico",
+            "location": "Roma",
+            "stato": "Italy",
+            "indirizzo": "Via ...",
+            "aperto_chiuso": "aperto",
+            "geolocation" : { "type": "Point", "coordinates": [ -73.97, 40.77 ] }
+            },
+        "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 50,
+            "id_ultimo_biglietto": 0
+        }
+    },
+    { // Esempio oggetto artista-gruppo
+        "artista": {"nome_arte": "Club Dogo", "nome": "", "cognome": ""},
+        "genere": ["",""], 
+        "membri": ["Gue", "Jake"],
+        "lista_eventi": ["id1","id2","id3"]
+    },
+    { // Esempio oggetto artista-singolo
+        "artista": {"nome_arte": "Gue", "nome": "L", "cognome": "L"},
+        "genere": ["",""], 
+        "membri": [""],
+        "lista_eventi": ["id1","id2",""]
+    }
+]

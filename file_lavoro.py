@@ -36,3 +36,9 @@ def menu():
                 break
             case _:
                 print("\n<<< Scelta non valida! Riprovare...")
+
+def main():
+    menu()
+    
+if __name__ == "__main__":
+    main()

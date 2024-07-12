@@ -42,3 +42,13 @@ def main():
     
 if __name__ == "__main__":
     main()
+    
+def cerca_artista(nome_ricerca):
+    artisti_cercati = db['artisti']
+    documenti_trovati = artisti_cercati.find(
+        {'artista': nome_ricerca},
+        {'_id': 0, 'artista.nome_arte': 1, 'lista_eventi': 1}
+    )
+    valori = [d for d in documenti_trovati]
+
+    return valori

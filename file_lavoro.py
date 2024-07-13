@@ -32,7 +32,11 @@ def menu():
                 print('D')
                 break
             case "v":
-                print('V')
+                print('RICERCA PER VICINANZA\nScrivi le coordinate da cui vuoi cercare le location più vicine (7 km)')
+                latitudine = float(input('Scrivi la latitudine: '))
+                longitudine = float(input('Scrivi la longitudine: '))
+                ricerca_v = cerca_per_vicinanza(latitudine, longitudine)
+                mostra_risultati_ricerca(ricerca_v)
                 break
             case _:
                 print("\n<<< Scelta non valida! Riprovare...")
@@ -67,3 +71,7 @@ def cerca_per_vicinanza(lat, lon, distanza=7):
     venues = [d for d in locations_trovate]
 
     return venues
+
+def mostra_risultati_ricerca(lista_risultato):
+    for i in range(1,len(lista_risultato)+1):
+        print(f'{i}: {lista_risultato[i]}')

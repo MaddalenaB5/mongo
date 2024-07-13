@@ -52,3 +52,18 @@ def cerca_artista(nome_ricerca):
     valori = [d for d in documenti_trovati]
 
     return valori
+    
+def cerca_per_vicinanza(lat, lon, distanza=7):
+    raggio = distanza/6378.1 # conversione km to radianti
+    locs = db['locations']
+    coord = [lon, lat]
+    locations_trovate = locs.find({
+        "geolocation.coordinates": {
+            "$geoWithin": {
+                "$centerSphere": [coord, raggio]
+            }
+        }
+    })
+    venues = [d for d in locations_trovate]
+
+    return venues

@@ -113,7 +113,34 @@ def cerca_data(db):
         '$gte': data_inizio_dt,
         '$lte': data_fine_dt
     }})
-
     eventi = [r for r in results]
-
     return eventi
+
+def acquista_biglietti(eventi):
+    try:
+        scelta = int(input("Per quale concerto vuoi acquistare? "))
+        if 1 <= scelta <= len(eventi):
+            evento_selezionato = eventi[scelta - 1]
+            num_biglietti = int(input("Quanti biglietti? "))
+
+            if evento_selezionato['disponibili'] >= num_biglietti:
+                totale = num_biglietti * evento_selezionato['prezzo']
+                print(f"I tuoi biglietti per un totale di {totale:.2f}€:")
+
+                for i in range(num_biglietti):
+                    print(f"{evento_selezionato['nome_evento']}, {evento_selezionato['data']}, n.{i+1:05}")
+
+                # Aggiorna la disponibilità dei biglietti
+                nuova_disponibilita = evento_selezionato['disponibili'] - num_biglietti
+                db['eventi'].update_one(
+                    {'nome': evento_selezionato['nome_evento'], 'data': evento_selezionato['data']},
+                    {'$set': {'disponibili': nuova_disponibilita}}
+                )
+
+                print(f"Disponibilità aggiornata\n{evento_selezionato['nome_evento']}, {evento_selezionato['data']}, disp:{nuova_disponibilita}")
+            else:
+                print("Numero di biglietti non disponibile.")
+        else:
+            print("Scelta non valida.")
+    except ValueError:
+        print("Inserisci un numero valido.")

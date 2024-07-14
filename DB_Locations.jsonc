@@ -6,7 +6,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [ 45.447062, 9.252403]
+        "coordinates": [9.252403, 45.447062]
     }
 },
 { 
@@ -16,7 +16,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [45.494072, 9.182444]
+        "coordinates": [9.182444,45.494072]
     }
 },
 { 
@@ -26,7 +26,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [45.448053, 9.205367]
+        "coordinates": [9.205367,45.448053]
     }
 },
 { 
@@ -36,7 +36,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [41.933900, 12.454553]
+        "coordinates": [12.454553,41.933900]
     }
 },
 { 
@@ -46,7 +46,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [41.825842, 12.467805]
+        "coordinates": [12.467805, 41.825842]
     }
 },
 { 
@@ -56,7 +56,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [41.885236, 12.485645]
+        "coordinates": [12.485645, 41.885236]
     }
 },
 { 
@@ -66,7 +66,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [40.826172, 14.194357]
+        "coordinates": [14.194357,40.826172]
     }
 },
 { 
@@ -76,7 +76,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [40.823826, 14.191144]
+        "coordinates": [14.191144, 40.823826]
     }
 },
 { 
@@ -86,7 +86,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [45.041410, 7.652550]
+        "coordinates": [7.652550, 45.041410]
     }
 },
 {
@@ -96,7 +96,7 @@
     "stato": "Italia",
     "geolocation": {
         "type": "Point", 
-        "coordinates": [45.070079, 7.693291]
+        "coordinates": [7.693291, 45.070079]
     }
 },
 {

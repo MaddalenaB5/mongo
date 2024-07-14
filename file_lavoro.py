@@ -13,7 +13,7 @@ def menu():
         print(f"""
 =================================================
      
-    Benvenuta/o !!       
+            Benvenuta/o !!       
  ______________________________________________
 |TROVA I TUOI CONCERTI PREFERITI               |
 |   a: Cerca per Artista                       |
@@ -83,7 +83,6 @@ def cerca_evento(e_ricerca):
     )
     return list(e_documenti_trovati)
 
-    
 def cerca_per_vicinanza(lat, lon, distanza=7):
     raggio = distanza/6378.1 # conversione km to radianti
     locs = db['locations']
@@ -102,3 +101,19 @@ def cerca_per_vicinanza(lat, lon, distanza=7):
 def mostra_risultati_ricerca(lista_risultato):
     for i in range(1,len(lista_risultato)+1):
         print(f'{i}: {lista_risultato[i]}')
+
+def cerca_data(db):
+    print('Inserisci il periodo che vuoi cercare in formato anno-mese-giorno\n')
+    data_inizio = str(input('Data inzio: '))
+    data_fine = str(input('Data fine: ')) 
+    data_inizio_dt = dt.datetime.strptime(data_inizio, '%Y-%m-%dT%H:%M:%S.000+00:00')
+    data_fine_dt = dt.datetime.strptime(data_fine, '%Y-%m-%dT%H:%M:%S.000+00:00')
+    results = eventi_cercati.find({'nome_evento': 1, 'data': 1},
+    {'released': {
+        '$gte': data_inizio_dt,
+        '$lte': data_fine_dt
+    }})
+
+    eventi = [r for r in results]
+
+    return eventi

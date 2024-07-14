@@ -1,0 +1,482 @@
+[
+    {  
+        "_id": "E1",
+       "nome_evento": "Eros Ramazzotti World Tour",
+       "id_artisti": ["A5"],   
+       "data": {"$date": "2024-08-15T00:00:00.000Z"},
+       "id_location": "L14",
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 40,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    {  
+        "_id": "E2",
+        "nome_evento": "Hello World Tour - Milano",
+        "id_artisti": ["A10"],
+        "data": {"$date": "2025-06-17T00:00:00.000Z"}, 
+        "id_location": "L3",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 50,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    {  
+        "_id": "E3",
+        "nome_evento": "One More Time Tour - Milan",
+        "id_artisti": ["A7"], 
+        "data": {"$date": "2025-09-09T00:00:00.000+00:00Z"},
+        "id_location": "L11",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 30,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E4",
+        "nome_evento": "Heaven Tour - Milan",
+        "id_artisti": ["A9"], 
+        "data": {"$date": "2025-07-07T00:00:00.000+00:00Z"},
+        "id_location": "L11",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 30,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E5",
+        "nome_evento": "Heaven Tour - Rome",
+        "id_artisti": ["A9"], 
+        "data": {"$date": "2025-07-12T00:00:00.000+00:00Z"},
+        "id_location": "L5",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 35,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    {  
+        "_id": "E6",
+        "nome_evento": "One More Time Tour - Rome",
+        "id_artisti": ["A7"], 
+        "data": {"$date": "2025-08-09T00:00:00.000+00:00Z"},
+        "id_location": "L5",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 40,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E7",
+        "nome_evento": "Habitat Summer Tour - Milano",
+        "id_artisti": ["A4"], 
+        "data": {"$date": "2024-10-05T00:00:00.000+00:00Z"},
+        "id_location": "L2",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 40,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E8",
+        "nome_evento": "Habitat Summer Tour - Roma",
+        "id_artisti": ["A4"],  
+        "data": {"$date": "2024-10-10T00:00:00.000+00:00Z"},
+        "id_location": "L6",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 40,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E9",
+        "nome_evento": "Habitat Summer Tour - Padova",
+        "id_artisti": ["A4"],  
+        "data": {"$date": "2024-10-15T00:00:00.000+00:00Z"},
+        "id_location": "L13",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 30,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    {  
+        "_id": "E10",
+        "nome_evento": "Tutti nel Vortice Tour - Padova", 
+        "id_artisti": ["A3"], 
+        "data": {"$date": "2024-10-11T00:00:00.000+00:00Z"},
+        "id_location": "L16",
+        "biglietti": {
+             "disponibili": 5000,
+             "prezzo": 30,
+             "id_ultimo_biglietto": 0
+        }
+    },
+    { 
+        "_id": "E11",
+        "nome_evento": "Gazzelle + Irbis",
+        "id_artisti": ["A12"], 
+        "data": {"$date": "2024-07-12T00:00:00.000+00:00Z"},
+        "id_location": "L13", 
+        "biglietti": {
+            "disponibili":5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E12",
+       "nome_evento": "Sfera Ebbasta - Tour Palasport",
+       "id_artisti": ["A13"],
+       "data": {"$date": "2024-12-1T00:00:00.000+00:00Z"},
+       "id_location": "L16", 
+       "biglietti": {
+            "disponibili":5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E13",
+       "nome_evento": "Francesco De Gregori dal vivo",
+       "id_artisti": ["A14"],
+       "data": {"$date": "2024-09-04T00:00:00.000+00:00Z"},
+       "id_location": "L20", 
+       "biglietti": {
+            "disponibili":5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E14",
+       "nome_evento": "LAZZA Locura Tour - Bologna",
+       "id_artisti": ["A15"], 
+       "data": {"$date": "2025-01-31T00:00:00.000+00:00Z"},
+       "id_location": "L19", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E15",
+       "nome_evento": "Heaven Tour - Bologna",
+       "id_artisti": ["A9"], 
+       "data": {"$date": "2024-11-17T00:00:00.000+00:00Z"},
+       "id_location": "L18", 
+       "biglietti": {
+            "disponibili":5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E16",
+       "nome_evento": "Ghali - Live 2024",
+       "id_artisti": ["A16"],
+       "data": {"$date": "2024-11-15T00:00:00.000+00:00Z"},
+       "id_location": "L13", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E17",
+       "nome_evento": "Paolo Nutini - Tour",
+       "id_artisti": ["A17"], 
+       "data": {"$date": "2024-10-14T00:00:00.000+00:00Z"},
+       "id_location": "L12",
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    }, 
+    { 
+        "_id": "E18",
+       "nome_evento": "Iron Maiden - World Tour",
+       "id_artisti": ["A18"],
+       "data": {"$date": "2025-02-02T00:00:00.000+00:00Z"},
+       "id_location": "L14", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E19",
+       "nome_evento": "Calcutta Live",
+       "id_artisti": ["A19"], 
+       "data": {"$date": "2024-12-05T00:00:00.000+00:00Z"},
+       "id_location": "L15", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E20",
+       "nome_evento": "ANNA Club Tour",
+       "id_artisti": ["A11"], 
+       "data": {"$date": "2024-11-30T00:00:00.000+00:00Z"},
+       "id_location": "L11", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E21",
+       "nome_evento": "Holden Tour - Milano",
+       "id_artisti": ["A21"], 
+       "data": {"$date": "2024-09-09T00:00:00.000+00:00Z"},
+       "id_location": "L3", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E22",
+       "nome_evento": "Le Vele Summer Tour - Napoli",
+       "id_artisti": ["A13", "A19", "A27", "A28", "A38"], 
+       "data": {"$date": "2024-08-02T00:00:00.000+00:00Z"},
+       "id_location": "L7", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E23",
+       "nome_evento": "EM15 Live - Milano",
+       "id_artisti": ["A24"], 
+       "data": {"$date": "2024-11-11T00:00:00.000+00:00Z"},
+       "id_location": "L3", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E24",
+       "nome_evento": "InCanto Live - Bologna",
+       "id_artisti": ["A15", "A16", "A21", "A22", "A23", "A24", "A25", "A33"], 
+       "data": {"$date": "2024-11-05T00:00:00.000+00:00Z"},
+       "id_location": "L18", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E25",
+       "nome_evento": "Note d'Estate Live Event - Parma",
+       "id_artisti": ["A29", "A30", "A32", "A39", "A40"], 
+       "data": {"$date": "2024-07-25T00:00:00.000+00:00Z"},
+       "id_location": "L20", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E26",
+       "nome_evento": "EuforiaLive Tour - Verona",
+       "id_artisti": ["A2", "A15", "A20", "A22", "A24"], 
+       "data": {"$date": "2024-10-15T00:00:00.000+00:00Z"},
+       "id_location": "L17", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E27",
+       "nome_evento": "BuBu Milano Live",
+       "id_artisti": ["A3", "A15", "A21", "A22", "A23", "A40"], 
+       "data": {"$date": "2025-02-05T00:00:00.000+00:00Z"},
+       "id_location": "L14", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E28",
+       "nome_evento": "EclissiSonora Tour - Torino",
+       "id_artisti": ["A6", "A7", "A8", "A9", "A10"], 
+       "data": {"$date": "2024-10-20T00:00:00.000+00:00Z"},
+       "id_location": "L9", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E29",
+       "nome_evento": "Scirocco Live eVent - Parma",
+       "id_artisti": ["A11", "A15", "A16", "A19", "A22", "A29", "A30", "A32"], 
+       "data": {"$date": "2024-09-02T00:00:00.000+00:00Z"},
+       "id_location": "L20", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E30",
+       "nome_evento": "ICEland Fire Music Live - Bologna",
+       "id_artisti": ["A7", "A8", "A9", "A18"], 
+       "data": {"$date": "2024-09-05T00:00:00.000+00:00Z"},
+       "id_location": "L19", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E31",
+       "nome_evento": "DuringSummer Live - Napoli",
+       "id_artisti": ["A1","A10","A15","A29","A38", "A39", "A40"], 
+       "data": {"$date": "2024-08-01T00:00:00.000+00:00Z"},
+       "id_location": "L8", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E32",
+       "nome_evento": "Live Trull's - Padova",
+       "id_artisti": ["A3","A11","A36"], 
+       "data": {"$date": "2024-10-10T00:00:00.000+00:00Z"},
+       "id_location": "L13", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E33",
+       "nome_evento": "Mida Vibes Live - Roma",
+       "id_artisti": ["A33"], 
+       "data": {"$date": "2024-09-05T00:00:00.000+00:00Z"},
+       "id_location": "L6", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E34",
+       "nome_evento": "Mika Magic Night - Milano",
+       "id_artisti": ["A34"], 
+       "data": {"$date": "2025-01-12T00:00:00.000+00:00Z"},
+       "id_location": "L3", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E35",
+       "nome_evento": "Sugar Night - Milano",
+       "id_artisti": ["A35"], 
+       "data": {"$date": "2025-02-02T00:00:00.000+00:00Z"},
+       "id_location": "L3", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E36",
+       "nome_evento": "Fibra Live Experience - Milano",
+       "id_artisti": ["A36"], 
+       "data": {"$date": "2025-02-07T00:00:00.000+00:00Z"},
+       "id_location": "L11", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },
+    { 
+        "_id": "E37",
+       "nome_evento": "Cristiano in Concerto - Vicenza",
+       "id_artisti": ["A37"], 
+       "data": {"$date": "2025-02-05T00:00:00.000+00:00Z"},
+       "id_location": "L15", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E38",
+       "nome_evento": "Geolier Special Night - Napoli",
+       "id_artisti": ["A38"], 
+       "data": {"$date": "2024-10-19T00:00:00.000+00:00Z"},
+       "id_location": "L7", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },  
+    { 
+        "_id": "E39",
+       "nome_evento": "Rkomi Live Show - Milano",
+       "id_artisti": ["A39"], 
+       "data": {"$date": "2024-10-20T00:00:00.000+00:00Z"},
+       "id_location": "L3", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    },   
+    { 
+        "_id": "E40",
+       "nome_evento": "Irama Grand Concert - Milano",
+       "id_artisti": ["A40"], 
+       "data": {"$date": "2024-10-25T00:00:00.000+00:00Z"},
+       "id_location": "L2", 
+       "biglietti": {
+            "disponibili": 5000,
+            "prezzo": 30,
+            "id_ultimo_biglietto": 0
+       }
+    }
+]

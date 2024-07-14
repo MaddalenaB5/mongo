@@ -1,0 +1,202 @@
+[
+{ 
+    "_id": "L1",
+    "location_name": "Fabrique",
+    "citta": "Milano",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [ 45.447062, 9.252403]
+    }
+},
+{ 
+    "_id": "L2",
+    "location_name": "Alcatraz",
+    "citta": "Milano",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [45.494072, 9.182444]
+    }
+},
+{ 
+    "_id": "L3",
+    "location_name": "Magazzini Generali",
+    "citta": "Milano",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [45.448053, 9.205367]
+    }
+},
+{ 
+    "_id": "L4",
+    "location_name": "Stadio Olimpico",
+    "citta": "Roma",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [41.933900, 12.454553]
+    }
+},
+{ 
+    "_id": "L5",
+    "location_name": "PalaEur",
+    "citta": "Roma",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [41.825842, 12.467805]
+    }
+},
+{ 
+    "_id": "L6",
+    "location_name": "Circo Massimo",
+    "citta": "Roma",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [41.885236, 12.485645]
+    }
+},
+{ 
+    "_id": "L7",
+    "location_name": "Palapartenope",
+    "citta": "Napoli",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [40.826172, 14.194357]
+    }
+},
+{ 
+    "_id": "L8",
+    "location_name": "PalaEldo",
+    "citta": "Napoli",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [40.823826, 14.191144]
+    }
+},
+{ 
+    "_id": "L9",
+    "location_name": "Pala Alpitour",
+    "citta": "Torino",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [45.041410, 7.652550]
+    }
+},
+{
+    "_id": "L10",
+    "location_name": "Teatro Regio",
+    "citta": "Torino",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [45.070079, 7.693291]
+    }
+},
+{
+    "_id": "L11",
+    "location_name": "Ippodromo di San Siro",
+    "citta": "Milano",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [9.1405, 45.4836]
+    }
+},
+{
+    "_id": "L12",
+    "location_name": "Arena di Verona",
+    "citta": "Verona",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [10.9944, 45.4386]
+    }
+},
+{
+    "_id": "L13",
+    "location_name": "Stadio GEOX",
+    "citta": "Padova",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [11.8850, 45.4186]
+    }
+},
+{
+    "_id": "L14",
+    "location_name": "Mediolanum Forum",
+    "citta": "Milano",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [9.1427, 45.4070]
+    }
+},
+{
+    "_id": "L15",
+    "location_name": "Teatro Comunale di Vicenza",
+    "citta": "Vicenza",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [11.5430, 45.5469]
+    }
+},
+{
+    "_id": "L16",
+    "location_name": "Villa Contarini",
+    "citta": "Padova",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [11.7765, 45.5543]
+    }
+},
+{
+    "_id": "L17",
+    "location_name": "Castello Scaligero",
+    "citta": "Verona",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [10.8444, 45.3493]
+    }
+},
+{
+    "_id": "L18",
+    "location_name": "Parco Nord",
+    "citta": "Bologna",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [11.3429, 44.5306]
+    }
+},
+{
+    "_id": "L19",
+    "location_name": "PalaDozza",
+    "citta": "Bologna",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [11.3269, 44.4989]
+    }
+},
+{
+    "_id": "L20",
+    "location_name": "Stadio Ennio Tardini",
+    "citta": "Parma",
+    "stato": "Italia",
+    "geolocation": {
+        "type": "Point", 
+        "coordinates": [10.3346, 44.7956]
+    }
+}
+]

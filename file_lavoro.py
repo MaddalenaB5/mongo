@@ -163,7 +163,7 @@ def menu_distanze(locations_trovate, db):
             break
     luoghi_cercati = db['eventi']
     l_documenti_trovati = luoghi_cercati.find(
-        {'_id': id_luogo}
+        {'id_location': id_luogo}
     )
     return list(l_documenti_trovati)
 

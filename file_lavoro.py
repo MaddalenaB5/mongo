@@ -169,8 +169,8 @@ def menu_distanze(locations_trovate, db):
     lista_eventi_trovati = list(l_documenti_trovati)
     lista_id_eventi = []
     for i in range(len(lista_eventi_trovati)):
-        lista_id_eventi.append(lista_eventi_trovati[i]['_id'])
-    return 
+        lista_id_eventi.append(lista_eventi_trovati[i].get())
+    return lista_id_eventi 
 
 ### RICERCA PER DATA
 

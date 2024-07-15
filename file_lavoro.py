@@ -53,12 +53,16 @@ def menu():
 
                 break
             case "v":
-                print('RICERCA PER VICINANZA\nScrivi le coordinate da cui vuoi cercare le location più vicine (7 km)')
-                latitudine = float(input('Scrivi la latitudine: '))
-                longitudine = float(input('Scrivi la longitudine: '))
-                ricerca_v = cerca_per_vicinanza(latitudine, longitudine)
-                #mostra_risultati_ricerca(ricerca_v)
-                break
+                print('RICERCA PER VICINANZA (7 km)\n')
+                while True:
+                    latitudine = float(input('Scrivi la latitudine: '))
+                    longitudine = float(input('Scrivi la longitudine: '))
+                    v_ricerca = cerca_per_vicinanza(latitudine, longitudine, db)
+                    #print(v_ricerca)
+                    nome_luogo = menu_distanze(v_ricerca)
+                    id_evento = menu_scelta_evento(nome_luogo, db)
+                    biglietto = acquista_biglietti(id_evento, db)
+                    break
             case "e":
                 print('RICERCA PER EVENTI\n')
                 while True:
@@ -131,6 +135,21 @@ def cerca_per_vicinanza(lat, lon, db, distanza=7):
     })
 
     return list(locations_trovate)
+
+
+def menu_distanze(locations_trovate):
+    num_distanze = len(locations_trovate)
+    diz = {}
+    for i in range(num_distanze):
+        print(f'{i+1} |', locations_trovate[i]['geolocation.coordinates'])
+        diz.update({i+1: locations_trovate[i]['geolocation.coordinates']})
+    while True:
+        print('Quale luogo stai cercando?\n')
+        scelta_utente = int(input(('Luogo n: ')))
+        luogo = diz.get(scelta_utente, False)
+        if luogo:
+            break
+    return luogo
 
 ### RICERCA PER DATA
 

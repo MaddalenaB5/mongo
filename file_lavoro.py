@@ -68,12 +68,9 @@ def menu(db):
                 while True:
                     e_ricerca = '^' + str(input('Inserisci il nome dell\'evento da cercare: ')).lower()
                     e_valori = cerca_evento(e_ricerca, db)
-                    nome_evento = menu_evento(e_valori)
-                    id_evento = menu_scelta_evento(nome_evento, db)
+                    id_evento = menu_evento(e_valori)
                     biglietto = acquista_biglietti(id_evento, db)
                     break
-                    #else:
-                        #print("Nessun evento trovato. Riprova.")
             case "x":
                 print("Chiusura applicazione...")
                 break
@@ -112,7 +109,7 @@ def cerca_evento(e_ricerca, db):
     eventi_cercati = db['eventi']
     e_documenti_trovati = eventi_cercati.find(
         {'nome_evento': {'$regex': e_ricerca, '$options': 'i'}},
-        {'_id': 0, 'id_artisti': 0, 'data': 1, 'id_location': 0, 'biglietti.disponibili': 1, 'biglietti.prezzo': 1} 
+        {'_id': 1, 'nome_evento': 1, 'data': 1, 'biglietti.disponibili': 1, 'biglietti.prezzo': 1} 
     )
     return list(e_documenti_trovati)
 
@@ -120,15 +117,15 @@ def menu_evento(e_documenti_trovati):
     num_eventi = len(e_documenti_trovati)
     diz = {}
     for i in range(num_eventi):
-        print(f'{i+1} |', e_documenti_trovati[i]['nome_evento'])
-        diz.update({i+1: e_documenti_trovati[i]['nome_evento']})
+        print(f"{i+1} | {e_documenti_trovati[i]['nome_evento']} - data {e_documenti_trovati[i]['data'].strftime('%Y-%m-%d')}")
+        diz.update({i+1: e_documenti_trovati[i]['_id']})
     while True:
         print('Quale evento stai cercando?\n')
         scelta_utente = int(input(('Evento n: ')))
-        nome_evento = diz.get(scelta_utente, False)
-        if nome_evento:
+        id_evento = diz.get(scelta_utente, False)
+        if id_evento:
             break
-    return nome_evento
+    return id_evento
 
 
 ### RICERCA PER VICINANZA    # Milano - 45.45 | 9.2

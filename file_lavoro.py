@@ -8,7 +8,10 @@ client = MongoClient('mongodb+srv://maddalenabozzola_:1iEoHJKaFeMqZDHH@ufs13.p4d
 db = client['biglietti']
 #print(db)
 
-def menu():
+def main():
+    menu(db)
+
+def menu(db):
     while True:
         print(f"""
 =================================================
@@ -77,16 +80,11 @@ def menu():
             case _:
                 print("\n<<< Scelta non valida! Riprovare...")
 
-def main():
-    menu()
     
-if __name__ == "__main__":
-    main()
-    
-def cerca_artista(a_ricerca):
+def cerca_artista(a_ricerca, db):
     artisti_cercati = db['artisti']
     a_documenti_trovati = artisti_cercati.find(   #$regex permette di trovare la parola anche se è una sottostringa del nome completo dell'artista
-        {'artista.nome_arte': {'$regex': a_ricerca}},
+        {'artista.nome_arte': {'$regex': a_ricerca, '$options': 'i'}},
         {'_id': 0, 'artista.nome_arte': 1, 'lista_eventi': 1}
     )
     return list(a_documenti_trovati)
@@ -113,7 +111,7 @@ def menu_artisti(lista_artisti):
 def cerca_evento(e_ricerca):
     eventi_cercati = db['eventi']
     e_documenti_trovati = eventi_cercati.find(
-        {'nome_evento': {'$regex': e_ricerca}},
+        {'nome_evento': {'$regex': e_ricerca, '$options': 'i'}},
         {'_id': 0, 'id_artisti': 0, 'data': 1, 'id_location': 0, 'biglietti.disponibili': 1, 'biglietti.prezzo': 1} 
     )
     return list(e_documenti_trovati)
@@ -260,8 +258,12 @@ def acquista_biglietti(id, db):
     
             db_eventi.update_one(
                     {'_id': id},
-                    {'$inc': {'biglietti.id_ultimo_biglietto': -num_biglietti}}
+                    {'$inc': {'biglietti.id_ultimo_biglietto': - num_biglietti}}
             )
 
             print(f"Disponibilità aggiornata\n{info_biglietti[0]['nome_evento']} - disponibili: {info_biglietti[0]['biglietti']['disponibili']}")
             return True
+
+
+if __name__ == "__main__":
+    main()

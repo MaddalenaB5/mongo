@@ -51,7 +51,7 @@ def menu(db):
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
                     id_evento = menu_date(d_valori)
                     biglietto = acquista_biglietti(id_evento, db)
-                break
+                    break
             case "v":
                 print('RICERCA PER VICINANZA (7 km)\n')
                 while True:
@@ -108,7 +108,7 @@ def menu_artisti(lista_artisti):
 ### RICERCA PER EVENTO
 
 
-def cerca_evento(e_ricerca):
+def cerca_evento(e_ricerca, db):
     eventi_cercati = db['eventi']
     e_documenti_trovati = eventi_cercati.find(
         {'nome_evento': {'$regex': e_ricerca, '$options': 'i'}},
@@ -152,8 +152,8 @@ def menu_distanze(locations_trovate):
     num_distanze = len(locations_trovate)
     diz = {}
     for i in range(num_distanze):
-        print(f'{i+1} |', locations_trovate[i]['geolocation.coordinates'])
-        diz.update({i+1: locations_trovate[i]['geolocation.coordinates']})
+        print(f'{i+1} |', locations_trovate[i]['geolocation']['coordinates'])
+        diz.update({i+1: locations_trovate[i]['geolocation']['coordinates']})
     while True:
         print('Quale luogo stai cercando?\n')
         scelta_utente = int(input(('Luogo n: ')))

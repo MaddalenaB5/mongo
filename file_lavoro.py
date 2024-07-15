@@ -59,8 +59,8 @@ def menu(db):
                     longitudine = float(input('Scrivi la longitudine: '))
                     v_ricerca = cerca_per_vicinanza(latitudine, longitudine, db)
                     #print(v_ricerca)
-                    nome_luogo = menu_distanze(v_ricerca)
-                    id_evento = menu_scelta_evento(nome_luogo, db)
+                    lista_eventi = menu_distanze(v_ricerca)
+                    id_evento = menu_scelta_evento(lista_eventi, db)
                     biglietto = acquista_biglietti(id_evento, db)
                     break
             case "e":
@@ -143,24 +143,29 @@ def cerca_per_vicinanza(lat, lon, db, distanza=7):
                 "$centerSphere": [coord, raggio]
             }
         }
-    })
+    }, 
+    {'_id': 1, 'location_name': 1, 'citta': 1})
 
     return list(locations_trovate)
 
 
-def menu_distanze(locations_trovate):
+def menu_distanze(locations_trovate, db):
     num_distanze = len(locations_trovate)
     diz = {}
     for i in range(num_distanze):
-        print(f'{i+1} |', locations_trovate[i]['geolocation']['coordinates'])
-        diz.update({i+1: locations_trovate[i]['geolocation']['coordinates']})
+        print(f"{i+1} | {locations_trovate[i]['location_name']} a {locations_trovate[i]['citta']}")
+        diz.update({i+1: locations_trovate[i]['_id']})
     while True:
         print('Quale luogo stai cercando?\n')
         scelta_utente = int(input(('Luogo n: ')))
-        luogo = diz.get(scelta_utente, False)
-        if luogo:
+        id_luogo = diz.get(scelta_utente, False)
+        if id_luogo:
             break
-    return luogo
+    luoghi_cercati = db['eventi']
+    l_documenti_trovati = luoghi_cercati.find(
+        {'_id': id_luogo}
+    )
+    return list(l_documenti_trovati)
 
 ### RICERCA PER DATA
 

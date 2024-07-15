@@ -2,6 +2,7 @@
 
 from bson import ObjectId
 from pymongo import MongoClient
+from datetime import datetime
 
 client = MongoClient('mongodb+srv://maddalenabozzola_:1iEoHJKaFeMqZDHH@ufs13.p4dqcok.mongodb.net/?retryWrites=true&w=majority&appName=UFS13')
 
@@ -258,7 +259,7 @@ def acquista_biglietti(id, db):
     
             db_eventi.update_one(
                     {'_id': id},
-                    {'$inc': {'biglietti.id_ultimo_biglietto': - num_biglietti}}
+                    {'$inc': {'biglietti.id_ultimo_biglietto': -num_biglietti}}
             )
 
             print(f"Disponibilità aggiornata\n{info_biglietti[0]['nome_evento']} - disponibili: {info_biglietti[0]['biglietti']['disponibili']}")

@@ -25,7 +25,7 @@ def menu():
 |______________________________________________|""")
 
 
-        scelta = input("\n> Inserisci la tua scelta (a, d, v): ").lower()
+        scelta = input("\n> Inserisci la tua scelta (a, d, e, v, x): ").lower()
         
         match scelta:
             case "a":

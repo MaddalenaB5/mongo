@@ -59,7 +59,7 @@ def menu(db):
                     longitudine = float(input('Scrivi la longitudine: '))
                     v_ricerca = cerca_per_vicinanza(latitudine, longitudine, db)
                     #print(v_ricerca)
-                    lista_eventi = menu_distanze(v_ricerca)
+                    lista_eventi = menu_distanze(v_ricerca, db)
                     id_evento = menu_scelta_evento(lista_eventi, db)
                     biglietto = acquista_biglietti(id_evento, db)
                     break

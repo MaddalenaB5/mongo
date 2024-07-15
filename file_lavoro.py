@@ -49,7 +49,7 @@ def menu(db):
                     d_inizio_ricerca = str(input('Data inizio: ')) 
                     d_fine_ricerca =  str(input('Data fine: '))
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
-                    #print(d_valori)
+                    print(d_valori)
                     lista_eventi_date = menu_date(d_valori)
                     id_evento = menu_scelta_evento(lista_eventi_date, db)
                     biglietto = acquista_biglietti(id_evento, db)

@@ -45,6 +45,7 @@ def menu(db):
             case "d":
                 print('RICERCA PER DATA\n')
                 while True:
+                    print('Inserisci il periodo che vuoi cercare in formato anno-mese-giorno\n')
                     d_inizio_ricerca = str(input('Data inizio: ')) 
                     d_fine_ricerca =  str(input('Data fine: '))
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
@@ -181,7 +182,6 @@ def cerca_data(db):
     return eventi
 '''
 def cerca_data(data_inizio, data_fine, db):
-    print('Inserisci il periodo che vuoi cercare in formato anno-mese-giorno\n')
     date_cercate = db['eventi']
     d_documenti_trovati = date_cercate.find({
         'data': {

@@ -49,9 +49,7 @@ def menu(db):
                     d_inizio_ricerca = str(input('Data inizio: ')) 
                     d_fine_ricerca =  str(input('Data fine: '))
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
-                    print(d_valori)
-                    lista_eventi_date = menu_date(d_valori)
-                    id_evento = menu_scelta_evento(lista_eventi_date, db)
+                    id_evento = menu_date(d_valori)
                     biglietto = acquista_biglietti(id_evento, db)
                 break
             case "v":
@@ -188,7 +186,7 @@ def cerca_data(data_inizio, data_fine, db):
             '$gte': datetime.strptime(data_inizio, '%Y-%m-%d'),
             '$lte': datetime.strptime(data_fine, '%Y-%m-%d')
     }},
-    {'nome_evento': 1, 'data': 1})
+    {'_id': 1,'nome_evento': 1, 'data': 1})
     return list(d_documenti_trovati)
 
 def menu_date(d_documenti_trovati):
@@ -200,10 +198,10 @@ def menu_date(d_documenti_trovati):
     while True:
         print('Quale evento stai cercando?\n')
         scelta_utente = int(input(('Evento n: ')))
-        nome_evento = diz.get(scelta_utente, False)
-        if nome_evento:
+        id_evento = diz.get(scelta_utente, False)
+        if id_evento:
             break
-    return nome_evento
+    return d_documenti_trovati[scelta_utente-1]['_id']
 
 
 ### ALTRE FUNZIONI

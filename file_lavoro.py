@@ -13,14 +13,17 @@ def menu():
         print(f"""
 =================================================
      
-            Benvenuta/o !!       
+    Benvenuta/o su TicketTwo!!       
  ______________________________________________
 |TROVA I TUOI CONCERTI PREFERITI               |
 |   a: Cerca per Artista                       |
 |   d: Cerca per Date                          |
-|   v: Cerca per Vicinanza                     |
 |   e: Cerca per Evento                        |
+|   v: Cerca per Vicinanza                     |
+|                                              |
+|   x: Esci dall'Applicazione                  |
 |______________________________________________|""")
+
 
         scelta = input("\n> Inserisci la tua scelta (a, d, v): ").lower()
         
@@ -45,7 +48,7 @@ def menu():
                 latitudine = float(input('Scrivi la latitudine: '))
                 longitudine = float(input('Scrivi la longitudine: '))
                 ricerca_v = cerca_per_vicinanza(latitudine, longitudine)
-                mostra_risultati_ricerca(ricerca_v)
+                #mostra_risultati_ricerca(ricerca_v)
                 break
             case "e":
                 while True:
@@ -57,6 +60,9 @@ def menu():
                         break
                     else:
                         print("Nessun evento trovato. Riprova.")
+            case "x":
+                print("Chiusura applicazione...")
+                break
             case _:
                 print("\n<<< Scelta non valida! Riprovare...")
 
@@ -83,7 +89,9 @@ def cerca_evento(e_ricerca):
     )
     return list(e_documenti_trovati)
 
-def cerca_per_vicinanza(lat, lon, distanza=7):
+### RICERCA PER VICINANZA    # Milano - 45.45 | 9.2
+
+def cerca_per_vicinanza(lat, lon, db, distanza=7):  
     raggio = distanza/6378.1 # conversione km to radianti
     locs = db['locations']
     coord = [lon, lat]
@@ -94,13 +102,9 @@ def cerca_per_vicinanza(lat, lon, distanza=7):
             }
         }
     })
-    venues = [d for d in locations_trovate]
 
-    return venues
+    return list(locations_trovate)
 
-def mostra_risultati_ricerca(lista_risultato):
-    for i in range(1,len(lista_risultato)+1):
-        print(f'{i}: {lista_risultato[i]}')
 
 def cerca_data(db):
     print('Inserisci il periodo che vuoi cercare in formato anno-mese-giorno\n')
@@ -116,31 +120,32 @@ def cerca_data(db):
     eventi = [r for r in results]
     return eventi
 
-def acquista_biglietti(eventi):
-    try:
-        scelta = int(input("Per quale concerto vuoi acquistare? "))
-        if 1 <= scelta <= len(eventi):
-            evento_selezionato = eventi[scelta - 1]
-            num_biglietti = int(input("Quanti biglietti? "))
-
-            if evento_selezionato['disponibili'] >= num_biglietti:
-                totale = num_biglietti * evento_selezionato['prezzo']
-                print(f"I tuoi biglietti per un totale di {totale:.2f}€:")
-
-                for i in range(num_biglietti):
-                    print(f"{evento_selezionato['nome_evento']}, {evento_selezionato['data']}, n.{i+1:05}")
+def acquista_biglietti(id, db):
+    db_eventi = db['eventi']
+    evento = db_eventi.find({
+        '_id': id
+    },
+    {'nome_evento': 1,'biglietti.disponibili': 1, 'biglietti.prezzo': 1, 'biglietti.id_ultimo_biglietto': 1})
+    info_biglietti = list(evento)
+    while True:
+        num_biglietti = int(input("Quanti biglietti vuoi acquistare? "))
+        if num_biglietti <= 0 or num_biglietti > info_biglietti[0]['biglietti']['disponibili']:
+            print("Non puoi acquistare così tanti biglietti!")
+        else:
+            print(f'Ecco i tuoi biglietti per un totale di {info_biglietti[0]["biglietti"]["prezzo"]*num_biglietti:.2f} € :\n')
+            for i in range(num_biglietti):
+                db_eventi.update_one(
+                    {'_id': id},
+                    {'$inc': {'biglietti.id_ultimo_biglietto': 1}}
+                    )
+                print(f'{info_biglietti[0]["nome_evento"]}, biglietto n. B{info_biglietti[0]["biglietti"]["id_ultimo_biglietto"]}')
 
                 # Aggiorna la disponibilità dei biglietti
-                nuova_disponibilita = evento_selezionato['disponibili'] - num_biglietti
-                db['eventi'].update_one(
-                    {'nome': evento_selezionato['nome_evento'], 'data': evento_selezionato['data']},
-                    {'$set': {'disponibili': nuova_disponibilita}}
-                )
+    
+            db_eventi.update_one(
+                    {'_id': id},
+                    {'$inc': {'biglietti.id_ultimo_biglietto': -num_biglietti}}
+            )
 
-                print(f"Disponibilità aggiornata\n{evento_selezionato['nome_evento']}, {evento_selezionato['data']}, disp:{nuova_disponibilita}")
-            else:
-                print("Numero di biglietti non disponibile.")
-        else:
-            print("Scelta non valida.")
-    except ValueError:
-        print("Inserisci un numero valido.")
+            print(f"Disponibilità aggiornata\n{info_biglietti[0]['nome_evento']} - disponibili: {info_biglietti[0]['biglietti']['disponibili']}")
+            return True

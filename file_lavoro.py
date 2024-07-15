@@ -28,18 +28,16 @@ def menu():
         scelta = input("\n> Inserisci la tua scelta (a, d, v): ").lower()
         
         match scelta:
-            
             case "a":
+                print('RICERCA PER ARTISTA\n')
                 while True:
-                    a_ricerca = str(input('Inserisci il nome dell\'artista da cercare: ')).lower()
-                    a_valori = cerca_artista(a_ricerca)
-                    if a_valori:
-                        for a_valore in a_valori:
-                            print(a_valore)
-                        break
-                    else:
-                        print("Nessun evento trovato. Riprova.")
-                break
+                    a_ricerca = '^' + str(input('Inserisci il nome dell\'artista da cercare: ')).lower()
+                    a_valori = cerca_artista(a_ricerca, db)
+                    nome_artista, lista_eventi = menu_artisti(a_valori)
+                    print(f'Eventi disponibili per {nome_artista}')
+                    id_evento = menu_scelta_evento(lista_eventi, db)
+                    biglietto = acquista_biglietti(id_evento, db)
+                    break
             case "d":
                 print('RICERCA PER DATA\n')
                 while True:
@@ -50,7 +48,6 @@ def menu():
                     lista_eventi_date = menu_date(d_valori)
                     id_evento = menu_scelta_evento(lista_eventi_date, db)
                     biglietto = acquista_biglietti(id_evento, db)
-
                 break
             case "v":
                 print('RICERCA PER VICINANZA (7 km)\n')
@@ -93,6 +90,22 @@ def cerca_artista(a_ricerca):
         {'_id': 0, 'artista.nome_arte': 1, 'lista_eventi': 1}
     )
     return list(a_documenti_trovati)
+
+
+def menu_artisti(lista_artisti):
+    num_artisti = len(lista_artisti)
+    diz = {}
+    for i in range(num_artisti):
+        print(f'{i+1} |', lista_artisti[i]['artista']['nome_arte'])
+        diz.update({i+1: lista_artisti[i]['artista']['nome_arte']})
+    while True:
+        print('Quale artista stai cercando?\n')
+        scelta_utente = int(input(('Artista n: ')))
+        nome_artista = diz.get(scelta_utente, False)
+        if nome_artista:
+            break
+    return nome_artista, lista_artisti[scelta_utente-1]['lista_eventi']
+        
 
 ### RICERCA PER EVENTO
 
@@ -195,6 +208,33 @@ def menu_date(d_documenti_trovati):
 
 
 ### ALTRE FUNZIONI
+
+def menu_scelta_evento(lista_eventi, db):
+    db_eventi = db['eventi']
+    eventi_disponibili_trovati = db_eventi.find(
+            {'_id': {'$in': lista_eventi}},
+            {'_id': 1,'nome_evento': 1, 'data': 1, 'biglietti.disponibili': 1, 'biglietti.prezzo': 1}
+        )
+    eventi_disponibili = list(eventi_disponibili_trovati)
+    num_eventi = len(eventi_disponibili)
+    diz = {}
+    for i in range(num_eventi):
+        nome_evento = eventi_disponibili[i]["nome_evento"]
+        data_evento = eventi_disponibili[i]["data"].strftime("%Y-%m-%d")
+        biglietti_disp = eventi_disponibili[i]["biglietti"]["disponibili"]
+        if biglietti_disp == 0:
+            biglietti_disp = 'SOLD-OUT'
+        prezzo_biglietto = eventi_disponibili[i]["biglietti"]["prezzo"]
+        print(f'{i+1} | {nome_evento} - data: {data_evento} - disp: {biglietti_disp} - prezzo: {prezzo_biglietto}' )
+        diz.update({i+1: eventi_disponibili[i]['_id']})
+    while True:
+        print('Quale evento stai cercando?\n')
+        scelta_utente = int(input(('Evento n: ')))
+        id_evento = diz.get(scelta_utente, False)
+        if id_evento:
+            break
+    return id_evento
+
 
 def acquista_biglietti(id, db):
     db_eventi = db['eventi']

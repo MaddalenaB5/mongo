@@ -239,7 +239,6 @@ def menu_scelta_evento(lista_eventi, db):
             break
     return id_evento
 
-
 def acquista_biglietti(id, db):
     db_eventi = db['eventi']
     evento = db_eventi.find({
@@ -247,29 +246,47 @@ def acquista_biglietti(id, db):
     },
     {'nome_evento': 1,'biglietti.disponibili': 1, 'biglietti.prezzo': 1, 'biglietti.id_ultimo_biglietto': 1})
     info_biglietti = list(evento)
+    #print(info_biglietti)
     while True:
-        num_biglietti = int(input("Quanti biglietti vuoi acquistare? "))
-        if num_biglietti <= 0 or num_biglietti > info_biglietti[0]['biglietti']['disponibili']:
+        biglietti_disponibili = info_biglietti[0]['biglietti']['disponibili']
+        num_biglietti_comprati = int(input("Quanti biglietti vuoi acquistare? "))
+        if num_biglietti_comprati <= 0 or num_biglietti_comprati > biglietti_disponibili:
             print("Non puoi acquistare così tanti biglietti!")
         else:
-            print(f'Ecco i tuoi biglietti per un totale di {info_biglietti[0]["biglietti"]["prezzo"]*num_biglietti:.2f} € :\n')
-            for i in range(num_biglietti):
-                db_eventi.update_one(
+            totale = info_biglietti[0]["biglietti"]["prezzo"]*num_biglietti_comprati
+            numero_ultimo_biglietto = info_biglietti[0]["biglietti"]["id_ultimo_biglietto"]
+            id_biglietto_iniziale = numero_ultimo_biglietto
+            print(f'Ecco i tuoi biglietti per un totale di {totale:.2f} € :\n')
+            for i in range(num_biglietti_comprati):
+                print(f'Stampa biglietto n. B{numero_ultimo_biglietto + 1} - evento: {info_biglietti[0]["nome_evento"]}')
+                numero_ultimo_biglietto += 1
+                sleep(2)
+
+            db_eventi.update_one(
                     {'_id': id},
-                    {'$inc': {'biglietti.id_ultimo_biglietto': 1}}
+                    {'$set': {
+                        'biglietti.id_ultimo_biglietto': 
+                            id_biglietto_iniziale + num_biglietti_comprati
+                    }}
                     )
-                print(f'{info_biglietti[0]["nome_evento"]}, biglietto n. B{info_biglietti[0]["biglietti"]["id_ultimo_biglietto"]}')
 
                 # Aggiorna la disponibilità dei biglietti
     
             db_eventi.update_one(
-                    {'_id': id},
-                    {'$inc': {'biglietti.id_ultimo_biglietto': -num_biglietti}}
-            )
-
-            print(f"Disponibilità aggiornata\n{info_biglietti[0]['nome_evento']} - disponibili: {info_biglietti[0]['biglietti']['disponibili']}")
-            return True
-
+                {'_id': id},
+                {'$set': {
+                        'biglietti.disponibili': 
+                            biglietti_disponibili - num_biglietti_comprati
+                    }} 
+                )
+            
+            evento_aggiornato = list(db_eventi.find({
+            '_id': id
+            },
+            {'nome_evento': 1,'biglietti.disponibili': 1}))
+            
+            print(f"Disponibilità aggiornata\n{evento_aggiornato[0]['nome_evento']} - disponibili: {evento_aggiornato[0]['biglietti']['disponibili']}")
+            break
 
 if __name__ == "__main__":
     main()

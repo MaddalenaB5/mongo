@@ -1,8 +1,8 @@
 #file di lavoro
 
-from bson import ObjectId
 from pymongo import MongoClient
 from datetime import datetime
+from time import sleep
 
 client = MongoClient('mongodb+srv://maddalenabozzola_:1iEoHJKaFeMqZDHH@ufs13.p4dqcok.mongodb.net/?retryWrites=true&w=majority&appName=UFS13')
 
@@ -41,6 +41,7 @@ def menu(db):
                     print(f'Eventi disponibili per {nome_artista}')
                     id_evento = menu_scelta_evento(lista_eventi, db)
                     biglietto = acquista_biglietti(id_evento, db)
+                    sleep(3)
                     break
             case "d":
                 print('RICERCA PER DATA\n')
@@ -51,6 +52,7 @@ def menu(db):
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
                     id_evento = menu_date(d_valori)
                     biglietto = acquista_biglietti(id_evento, db)
+                    sleep(3)
                     break
             case "v":
                 print('RICERCA PER VICINANZA (7 km)\n')
@@ -62,6 +64,7 @@ def menu(db):
                     lista_eventi = menu_distanze(v_ricerca, db)
                     id_evento = menu_scelta_evento(lista_eventi, db)
                     biglietto = acquista_biglietti(id_evento, db)
+                    sleep(3)
                     break
             case "e":
                 print('RICERCA PER EVENTI\n')
@@ -70,13 +73,16 @@ def menu(db):
                     e_valori = cerca_evento(e_ricerca, db)
                     id_evento = menu_evento(e_valori)
                     biglietto = acquista_biglietti(id_evento, db)
+                    sleep(3)
                     break
+                    
             case "x":
                 print("Chiusura applicazione...")
+                sleep(3)
                 break
             case _:
                 print("\n<<< Scelta non valida! Riprovare...")
-
+                sleep(2)
     
 def cerca_artista(a_ricerca, db):
     artisti_cercati = db['artisti']

@@ -241,6 +241,8 @@ def menu_scelta_evento(lista_eventi, db):
         id_evento = diz.get(scelta_utente, False)
         if id_evento:
             break
+        else:
+            print('Inserire di nuovo il numero\n')
     return id_evento
 
 def acquista_biglietti(id, db):

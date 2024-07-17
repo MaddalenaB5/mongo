@@ -37,10 +37,13 @@ def menu(db):
                 while True:
                     a_ricerca = '^' + str(input('Inserisci il nome dell\'artista da cercare: ')).lower()
                     a_valori = cerca_artista(a_ricerca, db)
-                    nome_artista, lista_eventi = menu_artisti(a_valori)
-                    print(f'Eventi disponibili per {nome_artista}')
-                    id_evento = menu_scelta_evento(lista_eventi, db)
-                    biglietto = acquista_biglietti(id_evento, db)
+                    if a_valori:
+                        nome_artista, lista_eventi = menu_artisti(a_valori)
+                        print(f'Eventi disponibili per {nome_artista}')
+                        id_evento = menu_scelta_evento(lista_eventi, db)
+                        biglietto = acquista_biglietti(id_evento, db)
+                    else:
+                        print('Non ci sono eventi! Torno al menù principale!')
                     sleep(3)
                     break
             case "d":
@@ -53,8 +56,11 @@ def menu(db):
                         print('Hai scritto le date al contrario! Risolvo io!')
                         d_inizio_ricerca, d_fine_ricerca = d_fine_ricerca, d_inizio_ricerca
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
-                    id_evento = menu_date(d_valori)
-                    biglietto = acquista_biglietti(id_evento, db)
+                    if d_valori:
+                        id_evento = menu_date(d_valori)
+                        biglietto = acquista_biglietti(id_evento, db)
+                    else:
+                        print('Non ci sono eventi! Torno al menù principale!')
                     sleep(3)
                     break
             case "v":
@@ -63,10 +69,12 @@ def menu(db):
                     latitudine = float(input('Scrivi la latitudine: '))
                     longitudine = float(input('Scrivi la longitudine: '))
                     v_ricerca = cerca_per_vicinanza(latitudine, longitudine, db)
-                    #print(v_ricerca)
-                    lista_eventi = menu_distanze(v_ricerca, db)
-                    id_evento = menu_scelta_evento(lista_eventi, db)
-                    biglietto = acquista_biglietti(id_evento, db)
+                    if v_ricerca:
+                        lista_eventi = menu_distanze(v_ricerca, db)
+                        id_evento = menu_scelta_evento(lista_eventi, db)
+                        biglietto = acquista_biglietti(id_evento, db)
+                    else:
+                        print('Non ci sono eventi! Torno al menù principale!')
                     sleep(3)
                     break
             case "e":
@@ -74,11 +82,13 @@ def menu(db):
                 while True:
                     e_ricerca = '^' + str(input('Inserisci il nome dell\'evento da cercare: ')).lower()
                     e_valori = cerca_evento(e_ricerca, db)
-                    id_evento = menu_evento(e_valori)
-                    biglietto = acquista_biglietti(id_evento, db)
+                    if e_valori:
+                        id_evento = menu_evento(e_valori)
+                        biglietto = acquista_biglietti(id_evento, db)
+                    else:
+                        print('Non ci sono eventi! Torno al menù principale!')
                     sleep(3)
                     break
-                    
             case "x":
                 print("Chiusura applicazione...")
                 sleep(3)

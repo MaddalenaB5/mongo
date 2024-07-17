@@ -49,6 +49,9 @@ def menu(db):
                     print('Inserisci il periodo che vuoi cercare in formato anno-mese-giorno\n')
                     d_inizio_ricerca = str(input('Data inizio: ')) 
                     d_fine_ricerca =  str(input('Data fine: '))
+                    if d_inizio_ricerca > d_fine_ricerca:
+                        print('Hai scritto le date al contrario! Risolvo io!')
+                        d_inizio_ricerca, d_fine_ricerca = d_fine_ricerca, d_inizio_ricerca
                     d_valori = cerca_data(d_inizio_ricerca, d_fine_ricerca, db)
                     id_evento = menu_date(d_valori)
                     biglietto = acquista_biglietti(id_evento, db)

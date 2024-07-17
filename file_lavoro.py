@@ -43,7 +43,7 @@ def menu(db):
                         id_evento = menu_scelta_evento(lista_eventi, db)
                         biglietto = acquista_biglietti(id_evento, db)
                     else:
-                        print('Non ci sono eventi! Torno al menù principale!')
+                        print('Nessun risultato trovato! Torno al menù principale!')
                     sleep(3)
                     break
             case "d":
@@ -60,7 +60,7 @@ def menu(db):
                         id_evento = menu_date(d_valori)
                         biglietto = acquista_biglietti(id_evento, db)
                     else:
-                        print('Non ci sono eventi! Torno al menù principale!')
+                        print('Nessun risultato trovato! Torno al menù principale!')
                     sleep(3)
                     break
             case "v":
@@ -74,7 +74,7 @@ def menu(db):
                         id_evento = menu_scelta_evento(lista_eventi, db)
                         biglietto = acquista_biglietti(id_evento, db)
                     else:
-                        print('Non ci sono eventi! Torno al menù principale!')
+                        print('Nessun risultato trovato! Torno al menù principale!')
                     sleep(3)
                     break
             case "e":
@@ -86,7 +86,7 @@ def menu(db):
                         id_evento = menu_evento(e_valori)
                         biglietto = acquista_biglietti(id_evento, db)
                     else:
-                        print('Non ci sono eventi! Torno al menù principale!')
+                        print('Nessun risultato trovato! Torno al menù principale!')
                     sleep(3)
                     break
             case "x":
